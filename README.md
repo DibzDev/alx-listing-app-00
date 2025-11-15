@@ -1,40 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# ALX Listing App - Milestone 2: Responsive Property Listing Page
 
-## Getting Started
+A responsive property listing application built with Next.js, TypeScript, and Tailwind CSS that displays luxury properties with filtering capabilities.
 
-First, run the development server:
+## 🚀 Milestone 2 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### ✅ Completed Requirements
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Layout Components
+- **Header** - Navigation bar with logo, search functionality, and accommodation types
+- **Footer** - Comprehensive footer with links and contact information
+- **Layout** - Wrapper component for consistent page structure across the application
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+#### Home Page Sections
+- **Hero Section** - Eye-catching banner with background image and call-to-action text
+- **Filter Section** - Interactive filter pills for property categories
+- **Property Listing Grid** - Responsive grid displaying all properties from sample data
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+#### Property Cards
+Each card displays:
+- Property image with discount badges
+- Property name and location
+- Star rating
+- Property categories/tags
+- Pricing information
+- Bed/bathroom/occupant details
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+#### Technical Implementation
+- **TypeScript Interfaces** - Properly typed property data structure
+- **Responsive Design** - Mobile-first approach with Tailwind CSS
+- **Component Architecture** - Modular and reusable components
+- **Dynamic Data Rendering** - Properties mapped from sample data array
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠 Tech Stack
 
-## Learn More
+- **Framework**: Next.js 14+
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Component Structure**: Functional Components with TypeScript
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Project Structure
+alx-listing-app-00/
+├── components/
+│ ├── layout/
+│ │ ├── Header.tsx
+│ │ ├── Footer.tsx
+│ │ └── Layout.tsx
+│ ├── Pill.tsx
+│ └── PropertyCard.tsx
+├── constants/
+│ └── index.ts
+├── interfaces/
+│ └── index.ts
+├── pages/
+│ ├── _app.tsx
+│ └── index.tsx
+├── public/
+│ └── assets/
+└── styles/
+└── globals.css
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## 🎯 Key Components
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Layout Components
+- `Layout.tsx` - Main layout wrapper
+- `Header.tsx` - Navigation with search and auth buttons
+- `Footer.tsx` - Site links and information
 
-## Deploy on Vercel
+### Page Components
+- `index.tsx` - Home page with hero, filters, and property listings
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### UI Components
+- `PropertyCard.tsx` - Individual property display card
+- `Pill.tsx` - Filter pill component
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+### Data Management
+- `interfaces/index.ts` - TypeScript interfaces for type safety
+- `constants/index.ts` - Sample property data array
+
+## 📱 Responsive Design
+
+The application is fully responsive and optimized for:
+- **Mobile** (320px+)
+- **Tablet** (768px+)
+- **Desktop** (1024px+)
+
+## 🎨 Features Implemented
+
+### Hero Section
+- Full-width background image
+- Overlay for better text readability
+- Responsive typography
+
+### Filter System
+- Clickable filter pills
+- Visual active state indication
+- Horizontal scrolling on mobile
+
+### Property Grid
+- Responsive grid layout (1-4 columns based on screen size)
+- Hover effects on cards
+- Discount badges for special offers
+- Category tags for easy scanning
+
+### Property Information
+- High-quality property images
+- Location details (city, state, country)
+- Star ratings
+- Pricing with currency formatting
+- Amenity and capacity details
+
+## 🔧 Installation & Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/DibzDev/alx-listing-app-00.git
+   cd alx-listing-app-00
