@@ -1,98 +1,58 @@
-import React from 'react';
-import Card from '../components/common/Card';
-import { Property } from '../interfaces';
+import { useState } from "react";
+import { PROPERTYLISTINGSAMPLE } from "@/constants";
+import { PropertyProps } from "@/interfaces";
+import PropertyCard from "@/components/PropertyCard";
+import Pill from "@/components/Pill";
 
-// Mock data for demonstration
-const mockProperties: Property[] = [
-  {
-    id: '1',
-    title: 'Modern Apartment in Downtown',
-    description: 'Beautiful modern apartment with stunning city views. Perfect for couples and business travelers.',
-    image: '/assets/7338ad8aeb0dd3e18b5c7cfdf094a7337ef0ce99 (1).png',
-    price: 120,
-    rating: 4.8,
-    location: 'New York, NY',
-    amenities: ['WiFi', 'Kitchen', 'Pool'],
-  },
-  {
-    id: '2',
-    title: 'Cozy Beach House',
-    description: 'Relax in this cozy beach house with direct access to the beach and amazing ocean views.',
-    image: '/assets/7338ad8aeb0dd3e18b5c7cfdf094a7337ef0ce99.png',
-    price: 200,
-    rating: 4.9,
-    location: 'Miami, FL',
-    amenities: ['Beach Access', 'Parking', 'Air Conditioning'],
-  },
-  {
-    id: '3',
-    title: 'Mountain Cabin Retreat',
-    description: 'Escape to this peaceful mountain cabin surrounded by nature. Perfect for hiking and relaxation.',
-    image: '/assets/c811f30edfff8de9c9b079139dd9782018c7e7c0.jpg',
-    price: 150,
-    rating: 4.7,
-    location: 'Aspen, CO',
-    amenities: ['Fireplace', 'Hiking', 'Hot Tub'],
-  },
-];
+const filters = ["Top Villa", "Self Checkin", "Mountain View", "Beachfront", "Pool", "Luxury", "Pet Friendly"];
 
 export default function Home() {
-  const handleBookNow = (propertyId: string) => {
-    alert(`Booking property: ${propertyId}`);
-    // In a real app, you would navigate to booking page or open a modal
-  };
+  const [activeFilter, setActiveFilter] = useState<string>("");
+  const [properties] = useState<PropertyProps[]>(PROPERTYLISTINGSAMPLE);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <h1 className="text-2xl font-bold text-gray-900">ALX Listing App</h1>
-          <p className="text-gray-600">Find your perfect stay</p>
+    <div>
+      {/* Hero Section */}
+      <section 
+        className="relative h-96 bg-cover bg-center flex items-center justify-center"
+        style={{
+          backgroundImage: "url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200')"
+        }}
+      >
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div className="relative text-center text-white z-10">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            Find your favorite place here!
+          </h1>
+          <p className="text-xl md:text-2xl">
+            The best prices for over 2 million properties worldwide.
+          </p>
         </div>
-      </header>
+      </section>
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Page Title */}
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Featured Properties</h2>
-          <p className="text-gray-600">Discover amazing places to stay around the world</p>
-        </div>
-
-        {/* Properties Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {mockProperties.map((property) => (
-            <Card
-              key={property.id}
-              title={property.title}
-              description={property.description}
-              imageUrl={property.image}
-              price={property.price}
-              rating={property.rating}
-              location={property.location}
-              onButtonClick={() => handleBookNow(property.id)}
+      {/* Filter Section */}
+      <section className="container mx-auto px-4 py-8">
+        <div className="flex flex-wrap gap-4 justify-center">
+          {filters.map((filter) => (
+            <Pill
+              key={filter}
+              label={filter}
+              isActive={activeFilter === filter}
+              onClick={() => setActiveFilter(filter === activeFilter ? "" : filter)}
             />
           ))}
         </div>
+      </section>
 
-        {/* Empty State (for demonstration) */}
-        {mockProperties.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No properties found</p>
-          </div>
-        )}
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <p className="text-center text-gray-500">
-            &copy; {new Date().getFullYear()} ALX Listing App. All rights reserved.
-          </p>
+      {/* Property Listing Section */}
+      <section className="container mx-auto px-4 py-8">
+        <h2 className="text-3xl font-bold mb-8 text-center">Featured Properties</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {properties.map((property, index) => (
+            <PropertyCard key={index} property={property} />
+          ))}
         </div>
-        
-      </footer>
+      </section>
     </div>
   );
 }
